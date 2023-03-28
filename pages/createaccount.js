@@ -26,6 +26,10 @@ export default function CreateAccount({ alluser = [] }) {
     return emailRegex.test(email);
   };
 
+  const validatePassword = (password) => {
+    return password.trim().length >= 8;
+  };
+
   const clearForm = () => {
     setName('');
     setEmail('');
@@ -40,7 +44,7 @@ export default function CreateAccount({ alluser = [] }) {
   const validateForm = () => {
     setNameValid(name.trim().length > 0);
     setEmailValid(validateEmail(email));
-    setPasswordValid(password.trim().length >= 8);
+    setPasswordValid(validatePassword(password));
     setNameError(nameValid ? '' : 'Name is required');
     setEmailError(emailValid ? '' : 'Email is invalid');
     setPasswordError(passwordValid ? '' : 'Password must be at least 8 characters');
